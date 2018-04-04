@@ -17,8 +17,17 @@ class QuizPageState extends State<QuizPage>{
       children: <Widget>[
         new Column(
           children: <Widget>[
-            new AnswerButton(true, Colors.greenAccent, () {print("Your answer is right");}),
-            new AnswerButton(false, Colors.redAccent,() {print("Your answer is NOT right");}),
+            new AnswerButton("Yes", true, Colors.greenAccent, () {print("Your answer is right");}),
+            new Material(
+              color:  Colors.white,
+              child: new Padding(
+                padding: new EdgeInsets.symmetric(vertical:20.0),
+                child: new Center(
+                  child: new Text("Do you know de wae?", style: new TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),),
+                ),
+              ),
+            ),
+            new AnswerButton("No", false, Colors.redAccent,() {print("Your answer is NOT right");}),
           ],
         )
       ],
