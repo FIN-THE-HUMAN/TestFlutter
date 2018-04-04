@@ -5,19 +5,19 @@ import '../utils/quiz.dart';
 
 import '../UI/answer_button_data.dart';
 
-class QuizPage extends StatefulWidget{
+class QuizPage extends StatefulWidget {
   @override
   State createState() => new QuizPageState();
 }
 
-class QuizPageState extends State<QuizPage>{
+class QuizPageState extends State<QuizPage> {
 @override
-   Widget build(BuildContext context){
+   Widget build(BuildContext context) {
     return new Stack(
       children: <Widget>[
         new Column(
           children: <Widget>[
-            new AnswerButton("Yes", true, Colors.greenAccent, () {print("Your answer is right");}),
+            new AnswerButton("Yes", true, Colors.greenAccent, () { print("Your answer is right");}),
             new Material(
               color:  Colors.white,
               child: new Padding(
