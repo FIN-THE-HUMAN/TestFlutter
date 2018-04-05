@@ -11,7 +11,21 @@ class QuestionText extends StatefulWidget {
   State createState() => new QuestionTextState();
 }
 
-class QuestionTextState extends State<QuestionText> {
+class QuestionTextState extends State<QuestionText> with SingleTickerProviderStateMixin {
+  
+  Animation<double> _fontSizeAnimation;
+  AnimationController _controller;
+  //int _fontSizeAnimationFactor = 15;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = new AnimationController(duration: new Duration(milliseconds:  800), vsync: this);
+    _fontSizeAnimation = new CurvedAnimation(parent:  _controller, curve: Curves.bounceOut);
+    _fontSizeAnimation.addListener(() => this.setState((){}));
+    _controller.forward();
+  }
+
   @override
   Widget build(BuildContext context){
     return new Container(
@@ -23,7 +37,9 @@ class QuestionTextState extends State<QuestionText> {
       child: new Padding(
         padding: new EdgeInsets.symmetric(vertical:20.0),
         child: new Center(
-            child: new Text(widget._question.toString(), style: new TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 20.0, fontStyle: FontStyle.italic ),),
+            child: new Text(widget._question.toString(), 
+              style: new TextStyle(fontSize: _fontSizeAnimation.value * 25, fontWeight: FontWeight.bold, fontStyle: FontStyle.italic ),
+          ),
         ),
       ),
     )
